@@ -30,14 +30,17 @@ jobs:
       - name: Build VitePress
         run: npm run build
 
+      - name: Setup Python and coscmd
+        run: |
+          python -m pip install --upgrade pip
+          pip install coscmd
+
       - name: Upload to Tencent COS
-        uses: tencentyun/cos-action@v1
-        with:
-          secret_id: ${{ secrets.TENCENT_SECRET_ID }}
-          secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
-          cos_bucket: ${{ secrets.COS_BUCKET }}
-          cos_region: ${{ secrets.COS_REGION }}
-          local_path: .vitepress/dist
-          remote_path: /
-          delete: true
-          accelerate: true
+        env:
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          COS_BUCKET: ${{ secrets.COS_BUCKET }}
+          COS_REGION: ${{ secrets.COS_REGION }}
+        run: |
+          coscmd config -a "$TENCENT_SECRET_ID" -s "$TENCENT_SECRET_KEY" -b "$COS_BUCKET" -r "$COS_REGION" -m 30
+          coscmd upload -rs --delete -f .vitepress/dist/ /
