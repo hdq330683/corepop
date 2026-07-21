@@ -127,12 +127,12 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/你的用户名/hudongquan-lawyer' }
+      { icon: 'github', link: 'https://github.com/hdq330683/corepop' }
     ],
 
     footer: {
       message: '硬核内容 · 自由表达',
-      copyright: 'Copyright © 2025 CorePop | <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2025XXXXXX号</a>'
+      copyright: 'Copyright © 2025 CorePop | <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2026055370号-1</a> | <a href="https://beian.mps.gov.cn/" target="_blank">浙公网安备33068302000443号</a>'
     },
 
     outline: {

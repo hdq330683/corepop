@@ -1,5 +1,10 @@
 node_modules/
-.vitepress/dist/
 .vitepress/cache/
+.vitepress/dist/
+.vitepress/dist-new/
+.public/images/*
+!public/images/.gitkeep
 .DS_Store
-*.log
+Thumbs.db
+*.local
+.env
